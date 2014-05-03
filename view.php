@@ -34,16 +34,24 @@ $accesscode = new accesscode_form();
 
 $toform['blockid'] = $blockid;
 $toform['courseid'] = $courseid;
+$toform['timeadded'] = $timeadded;
+$toform['userid'] = $userid;
+
 $accesscode->set_data($toform);
 
 if($accesscode->is_cancelled()) {
     // Cancelled forms redirect to the course main page.
-    $courseurl = new moodle_url('/course/view.php', array('id' => $id));
+    $courseurl = new moodle_url('/course/view.php', array('id' => '1'));
     redirect($courseurl);
 } else if ($fromform = $accesscode->get_data()) {
     // We need to add code to appropriately act on and store the submitted data
     // but for now we will just redirect back to the course main page.
-	print_object($fromform);
+    if (!$DB->insert_record('block_accesscode_lots', $fromform)) {
+    	print_error('inserterror', 'block_accesscode');
+	}
+	$courseurl = new moodle_url('/course/view.php', array('id' => '1'));
+	redirect($courseurl);
+	//print_object($fromform);
 } else {
     // form didn't validate or this is the first display
     $site = get_site();
@@ -52,6 +60,5 @@ if($accesscode->is_cancelled()) {
     echo $OUTPUT->footer();
 }
  
-$accesscode->display();
 
 ?>

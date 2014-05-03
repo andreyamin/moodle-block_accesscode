@@ -7,4 +7,4 @@ $string['createaccesscode'] = 'Create access code';
 $string['manageaccesscode'] = 'Manage access codes';
 $string['cohorid'] = 'Cohort id';
 $string['lotsize'] = 'Lot size';
-$string['desc'] = 'Description';
+$string['description'] = 'Description';

@@ -7,4 +7,4 @@ $string['createaccesscode'] = 'Criar códigos de acesso';
 $string['manageaccesscode'] = 'Gerenciar códigos de acesso';
 $string['cohorid'] = 'ID do coorte';
 $string['lotsize'] = 'Número de códigos';
-$string['desc'] = 'Descrição';
+$string['description'] = 'Descrição';
