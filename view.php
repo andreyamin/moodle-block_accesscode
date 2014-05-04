@@ -44,14 +44,23 @@ if($accesscode->is_cancelled()) {
     $courseurl = new moodle_url('/course/view.php', array('id' => '1'));
     redirect($courseurl);
 } else if ($fromform = $accesscode->get_data()) {
-    // We need to add code to appropriately act on and store the submitted data
-    // but for now we will just redirect back to the course main page.
-    if (!$DB->insert_record('block_accesscode_lots', $fromform)) {
+
+    if (!$lotid = $DB->insert_record('block_accesscode_lots', $fromform)) {
     	print_error('inserterror', 'block_accesscode');
+	}
+
+	for ($i = 1; $i <= $fromform->numcodes; $i++) {
+		$coderecord = new stdClass;
+		$coderecord->lotid = $lotid;
+		$coderecord->accesscode = $fromform->cohortid . str_pad($i, 3, '0', STR_PAD_LEFT);
+    	if (!$DB->insert_record('block_accesscode_codes', $coderecord)) {
+    		print_error('inserterror', 'block_accesscode');
+		}
+
 	}
 	$courseurl = new moodle_url('/course/view.php', array('id' => '1'));
 	redirect($courseurl);
-	//print_object($fromform);
+
 } else {
     // form didn't validate or this is the first display
     $site = get_site();
