@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * Access Code Management Block
+ *
+ * @package    block_accesscode
+ * @copyright  2014 edubit.com.br
+ * @author     Andre Yamin <andre@edubit.com.br>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
  
 require_once('../../config.php');
 require_once('accesscode_form.php');

@@ -1,4 +1,15 @@
 <?php
+
+/**
+ * Access Code Management Block
+ *
+ * @package    block_accesscode
+ * @copyright  2014 edubit.com.br
+ * @author     Andre Yamin <andre@edubit.com.br>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+
 class block_accesscode extends block_base {
     
     public function init() {
@@ -18,7 +29,7 @@ class block_accesscode extends block_base {
     	}
  
 	    $this->content         =  new stdClass;
-	    $this->content->text   = 'Gerar códigos de acesso';
+	    $this->content->text   = '';
 		$url = new moodle_url('/blocks/accesscode/view.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
 		$this->content->footer = html_writer::link($url, get_string('createaccesscode', 'block_accesscode'));
 
