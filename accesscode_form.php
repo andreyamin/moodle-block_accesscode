@@ -6,12 +6,19 @@ class accesscode_form extends moodleform {
 
  
     function definition() {
+
+        global $DB;
     	 
         $mform =& $this->_form;
         $mform->addElement('header','displayinfo', get_string('createaccesscode', 'block_accesscode'));
 
         //Cohort id field
-        $mform->addElement('text', 'cohortid', get_string('cohorid', 'block_accesscode'));
+        $cohorts = $DB->get_records('cohort');
+        $cohortlist = array();
+        foreach ($cohorts as $cohort) {
+            $cohortlist[$cohort->idnumber] = $cohort->idnumber . ' - ' . $cohort->name;
+        }
+        $mform->addElement('select', 'cohortid', get_string('cohorid', 'block_accesscode'),$cohortlist);
         $mform->addRule('cohortid', null, 'required', null, 'client');
 
         //Lot size
