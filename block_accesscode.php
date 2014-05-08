@@ -30,11 +30,11 @@ class block_accesscode extends block_base {
  
 	    $this->content         =  new stdClass;
 	    $this->content->text   = '';
-		$url = new moodle_url('/blocks/accesscode/view.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
+		$url = new moodle_url('/blocks/accesscode/index.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
 		$this->content->footer = html_writer::link($url, get_string('createaccesscode', 'block_accesscode'));
 
 	 
 	    return $this->content;
-	}
+    }
 
 }

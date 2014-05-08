@@ -30,12 +30,12 @@ if (!$course = $DB->get_record('course', array('id' => $courseid))) {
 }
  
 require_login($course);
-$PAGE->set_url('/blocks/accesscode/view.php', array('id' => $courseid));
+$PAGE->set_url('/blocks/accesscode/edit.php', array('id' => $courseid));
 $PAGE->set_pagelayout('standard');
 $PAGE->set_heading(get_string('createaccesscode', 'block_accesscode'));
 
 $settingsnode = $PAGE->settingsnav->add(get_string('accesscode', 'block_accesscode'));
-$editurl = new moodle_url('/blocks/accesscode/view.php', array('id' => $id, 'courseid' => $courseid, 'blockid' => $blockid));
+$editurl = new moodle_url('/blocks/accesscode/edit.php', array('id' => $id, 'courseid' => $courseid, 'blockid' => $blockid));
 $editnode = $settingsnode->add(get_string('manageaccesscode', 'block_accesscode'), $editurl);
 $editnode->make_active();
  
@@ -50,7 +50,7 @@ $accesscode->set_data($toform);
 
 if($accesscode->is_cancelled()) {
     // Cancelled forms redirect to the course main page.
-    $courseurl = new moodle_url('/course/view.php', array('id' => '1'));
+    $courseurl = new moodle_url('/course/edit.php', array('id' => '1'));
     redirect($courseurl);
 } else if ($fromform = $accesscode->get_data()) {
 
@@ -67,7 +67,7 @@ if($accesscode->is_cancelled()) {
 		}
 
 	}
-	$courseurl = new moodle_url('/course/view.php', array('id' => '1'));
+	$courseurl = new moodle_url('/course/edit.php', array('id' => '1'));
 	redirect($courseurl);
 
 } else {
