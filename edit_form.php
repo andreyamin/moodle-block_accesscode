@@ -11,7 +11,7 @@
 
 require_once("{$CFG->libdir}/formslib.php");
  
-class accesscode_form extends moodleform {
+class lotedit_form extends moodleform {
 
  
     function definition() {

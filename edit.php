@@ -10,7 +10,7 @@
  */
  
 require_once('../../config.php');
-require_once('accesscode_form.php');
+require_once('edit_form.php');
 
  
 global $DB, $OUTPUT, $PAGE, $USER;
@@ -39,20 +39,20 @@ $editurl = new moodle_url('/blocks/accesscode/edit.php', array('id' => $id, 'cou
 $editnode = $settingsnode->add(get_string('manageaccesscode', 'block_accesscode'), $editurl);
 $editnode->make_active();
  
-$accesscode = new accesscode_form();
+$loteditform = new lotedit_form();
 
 $toform['blockid'] = $blockid;
 $toform['courseid'] = $courseid;
 $toform['timeadded'] = $timeadded;
 $toform['userid'] = $userid;
 
-$accesscode->set_data($toform);
+$loteditform->set_data($toform);
 
-if($accesscode->is_cancelled()) {
+if($loteditform->is_cancelled()) {
     // Cancelled forms redirect to lot management main page.
     $indexurl = new moodle_url('/blocks/accesscode/index.php', array('courseid' => $courseid, 'blockid' => $blockid));
     redirect($indexurl);
-} else if ($fromform = $accesscode->get_data()) {
+} else if ($fromform = $loteditform->get_data()) {
     // Here goes the code executed when the form is submited
     if (!$lotid = $DB->insert_record('block_accesscode_lots', $fromform)) {
     	print_error('inserterror', 'block_accesscode');
@@ -74,7 +74,7 @@ if($accesscode->is_cancelled()) {
     // form didn't validate or this is the first display
     $site = get_site();
     echo $OUTPUT->header();
-    $accesscode->display();
+    $loteditform->display();
     echo $OUTPUT->footer();
 }
  
