@@ -22,7 +22,14 @@ class accesscode_form extends moodleform {
         $mform->addElement('header','displayinfo', get_string('createaccesscode', 'block_accesscode'));
 
         //Cohort id field
-        $cohorts = $DB->get_records('cohort');
+        $sql = 'SELECT * 
+                FROM {cohort}
+                WHERE idnumber 
+                NOT IN (
+                    SELECT cohortid
+                    FROM {block_accesscode_lots}
+                )';
+        $cohorts = $DB->get_records_sql($sql);
         $cohortlist = array();
         foreach ($cohorts as $cohort) {
             $cohortlist[$cohort->idnumber] = $cohort->idnumber . ' - ' . $cohort->name;
