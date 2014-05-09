@@ -25,3 +25,4 @@ $string['addnewcohort'] = 'Add new cohort';
 $string['cohortname'] = 'Cohort name';
 $string['availablecodes'] = 'Available codes';
 $string['dellot'] = 'Delete Lot';
+$string['confirmdellot'] = 'Are you sure do you want to delete the lot {$a}';

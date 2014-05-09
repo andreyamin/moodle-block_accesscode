@@ -25,3 +25,4 @@ $string['addnewcohort'] = 'Criar novo coorte';
 $string['cohortname'] = 'Nome do coorte';
 $string['availablecodes'] = 'Códigos disponíveis';
 $string['dellot'] = 'Apagar lote';
+$string['confirmdellot'] = 'Tem certeza que quer deletar o lote {$a}';

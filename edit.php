@@ -57,7 +57,7 @@ if ($delete and $lotid) {
     echo $OUTPUT->header();
     echo $OUTPUT->heading($strheading);
     $yesurl = new moodle_url('/blocks/accesscode/edit.php', array('blockid'=>$blockid,'courseid'=>$courseid, 'lotid'=>$lotid, 'delete'=>1, 'confirm'=>1,'sesskey'=>sesskey()));
-    $message = 'Tem certeza?';
+    $message = get_string('confirmdellot','block_accesscode', $lotid);
     $indexurl = new moodle_url('/blocks/accesscode/index.php', array('courseid' => $courseid, 'blockid' => $blockid));
     echo $OUTPUT->confirm($message, $yesurl, $indexurl);
     echo $OUTPUT->footer();
