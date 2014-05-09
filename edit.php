@@ -53,7 +53,7 @@ if($accesscode->is_cancelled()) {
     $courseurl = new moodle_url('/course/edit.php', array('id' => '1'));
     redirect($courseurl);
 } else if ($fromform = $accesscode->get_data()) {
-
+    // Here goes the code executed when the form is submited
     if (!$lotid = $DB->insert_record('block_accesscode_lots', $fromform)) {
     	print_error('inserterror', 'block_accesscode');
 	}
@@ -67,8 +67,8 @@ if($accesscode->is_cancelled()) {
 		}
 
 	}
-	$courseurl = new moodle_url('/course/edit.php', array('id' => '1'));
-	redirect($courseurl);
+	$indexurl = new moodle_url('/blocks/accesscode/index.php', array('courseid' => $courseid, 'blockid' => $blockid));
+	redirect($indexurl);
 
 } else {
     // form didn't validate or this is the first display
