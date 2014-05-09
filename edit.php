@@ -49,9 +49,9 @@ $toform['userid'] = $userid;
 $accesscode->set_data($toform);
 
 if($accesscode->is_cancelled()) {
-    // Cancelled forms redirect to the course main page.
-    $courseurl = new moodle_url('/course/edit.php', array('id' => '1'));
-    redirect($courseurl);
+    // Cancelled forms redirect to lot management main page.
+    $indexurl = new moodle_url('/blocks/accesscode/index.php', array('courseid' => $courseid, 'blockid' => $blockid));
+    redirect($indexurl);
 } else if ($fromform = $accesscode->get_data()) {
     // Here goes the code executed when the form is submited
     if (!$lotid = $DB->insert_record('block_accesscode_lots', $fromform)) {
