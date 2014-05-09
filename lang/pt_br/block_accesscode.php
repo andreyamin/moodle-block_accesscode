@@ -24,3 +24,4 @@ $string['addnewlot'] = 'Criar novo lote';
 $string['addnewcohort'] = 'Criar novo coorte';
 $string['cohortname'] = 'Nome do coorte';
 $string['availablecodes'] = 'Códigos disponíveis';
+$string['dellot'] = 'Apagar lote';

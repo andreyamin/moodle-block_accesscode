@@ -24,3 +24,4 @@ $string['addnewlot'] = 'Add new lot';
 $string['addnewcohort'] = 'Add new cohort';
 $string['cohortname'] = 'Cohort name';
 $string['availablecodes'] = 'Available codes';
+$string['dellot'] = 'Delete Lot';

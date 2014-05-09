@@ -50,7 +50,7 @@ foreach($lots as $lot) {
     $line[] = $lot->numcodes;
     $line[] = $DB->count_records('block_accesscode_codes', array('lotid'=>$lot->id, 'userid'=>0));
     $buttons = array();
-    $buttons[] = html_writer::link(new moodle_url('/block/accesscode/edit.php'), 
+    $buttons[] = html_writer::link(new moodle_url('/blocks/accesscode/edit.php', array('delete'=>'1','courseid'=>$courseid, 'blockid'=>$blockid, 'lotid'=>$lot->id)), 
         html_writer::empty_tag('img', array('src'=>$OUTPUT->pix_url('t/delete'), 'alt'=>get_string('delete'), 'class'=>'iconsmall')));
     $line[] = implode(' ', $buttons);
     $data[] = $line;
