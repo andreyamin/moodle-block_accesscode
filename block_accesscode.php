@@ -22,19 +22,24 @@ class block_accesscode extends block_base {
 
     public function get_content() {
 
-    	global $COURSE;
-    
-    	if ($this->content !== null) {
-      		return $this->content;
-    	}
- 
-	    $this->content         =  new stdClass;
-	    $this->content->text   = '';
-		$url = new moodle_url('/blocks/accesscode/index.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
-		$this->content->footer = html_writer::link($url, get_string('createaccesscode', 'block_accesscode'));
+        if (is_siteadmin()){
+            global $COURSE;
+        
+            if ($this->content !== null) {
+                return $this->content;
+            }
+     
+            $this->content         =  new stdClass;
+            $this->content->text   = '';
+            $url = new moodle_url('/blocks/accesscode/index.php', array('blockid' => $this->instance->id, 'courseid' => $COURSE->id));
+            $this->content->footer = html_writer::link($url, get_string('createaccesscode', 'block_accesscode'));
 
-	 
-	    return $this->content;
+         
+            return $this->content;
+
+        }
+
+
     }
 
 }
